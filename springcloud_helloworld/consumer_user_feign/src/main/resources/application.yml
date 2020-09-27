@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: ConsumerUserFeign
+server:
+  port: 7000
+# 开启Feign的熔断功能
+feign:
+  hystrix:
+    enabled: true
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include: hystrix.stream #访问/actuator/hystrix.stream能看到不断更新的监控流
